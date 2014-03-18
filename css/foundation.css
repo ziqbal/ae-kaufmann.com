@@ -110,10 +110,10 @@ select {
 	width: 100%;
 	margin-left: auto;
 	margin-right: auto;
-	margin-top: 0;
+	margin-top: 0px;
 	margin-bottom: 0;
-	max-width: 62.5rem;
-  *zoom: 1; 	z-index: 100;
+	max-width: 62.8rem;
+  *zoom: 1; 				z-index: 100;
 }
   .row:before, .row:after {
     content: " ";
@@ -1115,7 +1115,7 @@ meta.foundation-mq-topbar {
 	padding: 12px 0 12px 0;
 	padding-left: 15px;
 	font-family: "Open sans", sans-serif;
-	font-size: 18px;
+	font-size: 16px;
 	font-weight: 400;
 	background: #333333;
 }

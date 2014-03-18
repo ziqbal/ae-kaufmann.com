@@ -9,6 +9,9 @@
 	margin-bottom: 0;
   *zoom: 1;
 	display: block;
+	background-color: #FFF;
+	filter: alpha(opacity=85);
+	opacity: 0.85;
 }
   .row2:before, .row2:after {
     content: " ";
@@ -58,6 +61,7 @@
 	height: 200px;
 	position: absolute;
 	width: 100%;
+	margin: -130px 0 0 0;
 }
   .row3:before, .row3:after {
     content: " ";
