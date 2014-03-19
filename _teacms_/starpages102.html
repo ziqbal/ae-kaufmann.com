@@ -1,0 +1,19 @@
+<?php
+
+
+$embed=templateVarDataProp('embed');
+$newWidth = 400;
+$newHeight = 250;
+
+$embed = preg_replace(
+   array('/width="\d+"/i', '/height="\d+"/i'),
+   array(sprintf('width="%d"', $newWidth), sprintf('height="%d"', $newHeight)),
+   $embed);
+
+
+?>
+
+
+
+<?=$embed?>
+<div><?=templateVarDataProp('_displaytext_')?></div>

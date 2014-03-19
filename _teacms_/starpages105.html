@@ -1,0 +1,30 @@
+<?php if($starpageLoadFirstTime){?>
+<?php }?>
+
+
+<style>
+.<?=$sid?>Container{
+	margin-top:3px;
+}
+
+
+.<?=$sid?>Container:hover{
+	background-color:<?=translateMemoryV2("colourlinkcurrentbg")?>;
+	color:<?=translateMemoryV2("colourlinkcurrentfg")?>;
+}
+
+.<?=$sid?>ContainerTitle{
+	font-weight: bold;
+}
+</style>
+
+
+<a target='_blank' href='<?="_dangerousbend_/_cache_/".PROJECTNAME."/".templateVarDataProp('fuid')?>'>
+<div class='<?=$sid?>Container'>
+
+<div class='<?=$sid?>ContainerTitle'>
+<?=templateVarDataProp('_displaytext_')?>
+</div>
+
+</div>
+</a>

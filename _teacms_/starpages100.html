@@ -1,0 +1,23 @@
+<?php if($starpageLoadFirstTime){?>
+<style>
+.star100Container{
+	font-family: sans-serif;
+	font-weight: lighter;
+	padding-top: 5px;
+}
+</style>
+<?php }?>
+
+
+<?php if(templateVarDataProp('maintitle')!=''){?>
+<h4><?=templateVarDataProp('maintitle')?></h4>
+<?php }?>
+
+<?php if(templateVarDataProp('shortdescription')!=''){?>
+<?=templateVarDataProp('shortdescription')?>
+<?php }?>
+
+<?php if(templateVarDataProp('longdescription')!=''){?>
+<?=templateVarDataProp('longdescription')?>
+<?php }?>
+
