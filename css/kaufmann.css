@@ -161,6 +161,15 @@
 	margin-top: 400px;
 }
 .rowHome2 {
+	background-color: #CCCCCC;
+	opacity:0.8;
+	filter:alpha(opacity=80); /* For IE8 and earlier */
+	display:block;
+	z-index: 2;
+	width: 100%;
+	margin-top: 0px;
+}
+.rowHome2b {
 	background-color: #5f5f67;
 	display:block;
 	z-index: 100;
@@ -198,7 +207,7 @@
 	padding: 10px 0 10px 0;
 }
 .rowHome2 p, .rowHome3 p{
-	color: #fff;
+	color: #000;
 }.rowHome4 p {
 	color: #333;
 }
@@ -218,7 +227,7 @@
 	float: right;
 }
 .clearBox1 {
-	padding: 56px 10px 0px 20px;
+	padding: 83px 10px 0px 20px;
 }
 .rightNaviTitle {
 	font-size: 1.6em;
@@ -248,6 +257,62 @@
 	text-decoration: none;
 }
 .rightNaviItem a:active {
+	color: #fff;
+	background-color: #333;
+	text-decoration: none;
+}
+.rightNaviSubItem {
+	line-height: 1.5em;
+	font-size: 0.9em;
+	background-position-y: bottom;
+	background-repeat: repeat-x;
+	background-image: url(../slices/bg-dot1.gif);
+	padding: 4px 0 5px 20px;
+	
+	}
+.rightNaviSubItem a {
+	color: #333;
+	text-decoration: none;
+	display:block;
+	
+}
+.rightNaviSubItem a:visited {
+	color: #333;
+	text-decoration: none;
+}
+.rightNaviSubItem a:hover{
+	color: #fff;
+	/*background-color: #d9002b;*/
+	text-decoration: none;
+	display:block;;
+}
+.rightNaviSubItem:active {
+	color: #fff;
+	background-color: #333;
+	text-decoration: none;
+}
+.bg-arrow1 {
+	background-repeat: no-repeat;
+	background-image: url(../slices/bg-arrow1.png);
+	background-position: left center;
+}
+.bg-arrow1 a {
+	color: #333;
+	text-decoration: none;
+	display:block;
+	
+}
+.bg-arrow1 a:visited {
+	color: #333;
+	text-decoration: none;
+}
+.bg-arrow1 a:hover{
+	color: #fff;
+	background-color: #d9002b;
+	text-decoration: none;
+	display:block;;
+}
+.bg-arrow1 a:active {
 	color: #fff;
 	background-color: #333;
 	text-decoration: none;
