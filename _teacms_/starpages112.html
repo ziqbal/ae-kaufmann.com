@@ -1,0 +1,19 @@
+
+<div id="<?=$sid?>">
+
+<div class="homeRoundImageHolder">
+<a class="avatar" text-align="center" href='<?=templateVarDataProp('_refurl_')?>'>
+<img title='<?=templateVarDataProp('_displaytext_')?>' src='<?=templateVarDataProp('_img_src_4_')?>'/>
+</a>
+</div>
+
+</div>
+
+
+<script>
+
+jqueryWhenReady.run(function(){
+	$("#_homeRoundImageHolders").append($("#<?=$sid?>"));
+});
+
+</script>
