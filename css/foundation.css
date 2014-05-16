@@ -4076,9 +4076,10 @@ table {
   table tr td {
     padding: 0.5625rem 0.625rem;
     font-size: 0.875rem;
+	font-weight: 400;
     color: #222222; }
   table tr.even, table tr.alt, table tr:nth-of-type(even) {
-    background: #f9f9f9; }
+    background: #f3f3f3; }
   table thead tr th,
   table tfoot tr th,
   table tbody tr td,
