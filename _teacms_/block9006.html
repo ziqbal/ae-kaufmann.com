@@ -1,0 +1,63 @@
+<?php
+
+if($itemCounter==0){
+
+	$blockToken=templateVarDataProp('_token_');
+	$blockLevel=intval(templateVarDataProp('_level_'));
+	$parentPage=-1*templateVarDataProp('_parent_');
+	$navtree=templateModelGet("navtree");
+
+	$navtreeCount=count($navtree);
+
+	//logWrite($blockLevel);
+	//logWrite($navtree);
+
+	$parentPos=-1;
+
+	foreach($navtree as $nk=>$nv){
+		if($nv['id']==$parentPage){
+			$parentPos=$nk;
+			break;
+		}
+	}
+
+	//logWrite($parentPos);
+
+	$startPos=$parentPos+1;
+
+	for($i=$startPos;$i<$navtreeCount;$i++){
+
+		$currentLevel=intval($navtree[$i]['_level_']);
+
+		if($currentLevel<$blockLevel) break;
+
+		if($navtree[$i]['_token_']==$blockToken) continue;
+		if($navtree[$i]['_hidden_']=='1') continue;
+
+		$displaytext=$navtree[$i]['_displaytext_'];
+		$url=$navtree[$i]['_url_'];
+
+
+		if($currentLevel==$blockLevel){?>
+
+<div class='rightNaviItem'><a href='<?=$url?>'><?=$displaytext?></a></div>
+
+		<?php }
+
+		if($currentLevel==($blockLevel+1)){?>
+
+<div class="bg-arrow1"><div class="rightNaviSubItem"><a href='<?=$url?>'><?=$displaytext?></a></div></div>
+
+		<?php }
+
+	}
+
+}
+
+?>
+
+
+
+
+
+
