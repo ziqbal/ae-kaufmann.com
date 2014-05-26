@@ -3,25 +3,25 @@
 if($itemCounter==0){
 
 	$blockToken=templateVarDataProp('_token_');
-	$blockLevel=intval(templateVarDataProp('_level_'));
-	$parentPage=-1*templateVarDataProp('_parent_');
+	$blockLevel=templateVarDataProp('_level_');
+	$parentPage=templateVarDataProp('_parent_');
+	$blockTemplate=templateVarDataProp('_template_');
 	$navtree=templateModelGet("navtree");
+
+	//logWrite($blockTemplate);
 
 	$navtreeCount=count($navtree);
 
-	//logWrite($blockLevel);
-	//logWrite($navtree);
-
 	$parentPos=-1;
 
+	$parentPageSignChange=-1*$parentPage;
+
 	foreach($navtree as $nk=>$nv){
-		if($nv['id']==$parentPage){
+		if($nv['id']==$parentPageSignChange){
 			$parentPos=$nk;
 			break;
 		}
 	}
-
-	//logWrite($parentPos);
 
 	$startPos=$parentPos+1;
 
@@ -36,6 +36,15 @@ if($itemCounter==0){
 
 		$displaytext=$navtree[$i]['_displaytext_'];
 		$url=$navtree[$i]['_url_'];
+		$template=$navtree[$i]['_template_'];
+
+		$finalTemplate=templateBaseChoose($blockTemplate,$template);
+
+		$finalURL=templateBaseSwitchURL($url,$finalTemplate);
+
+		//logWrite("[$url] $blockTemplate , $template -> $finalTemplate [$finalURL]");
+
+		$url=$finalURL;
 
 
 		if($currentLevel==$blockLevel){?>
