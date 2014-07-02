@@ -2216,7 +2216,7 @@ div.switch {
   .orbit-container .orbit-prev,
   .orbit-container .orbit-next {
     position: absolute;
-    top: 45%;
+    top: 18%;
     margin-top: -25px;
     width: 36px;
     height: 60px;
@@ -2231,7 +2231,7 @@ div.switch {
     .orbit-container .orbit-prev > span,
     .orbit-container .orbit-next > span {
       position: absolute;
-      top: 50%;
+      top: 18%;
       margin-top: -10px;
       display: block;
       width: 0;
