@@ -1,0 +1,59 @@
+<?php
+
+
+//logWrite($GLOBALS["_teacms_tree_"]);
+
+// fixme todo - add 'treeid' to page to avoid look up?
+$thisID=templateVarDataProp('id');
+$thisLevel=templateVarDataProp('_level_');
+$thisPOS='';
+
+foreach($GLOBALS["_teacms_tree_"] as $gk=>$gv){
+    if($gv['id']==$thisID){
+        $thisPOS=$gk;
+        break;
+    }
+}
+logWrite("[ $thisPOS ] $thisID => $thisLevel");
+$thisPOS++;
+
+$images=array();
+while(isset($GLOBALS["_teacms_tree_"][$thisPOS])){
+    if($GLOBALS["_teacms_tree_"][$thisPOS]['_level_']<=$thisLevel) break;
+    if($GLOBALS["_teacms_tree_"][$thisPOS]['_level_']==($thisLevel+1) && $GLOBALS["_teacms_tree_"][$thisPOS]['_star_']==101){
+
+        //logWrite($GLOBALS["_teacms_tree_"][$thisPOS]);
+        $images[]=$GLOBALS["_teacms_tree_"][$thisPOS]['_img_src_4_'];
+
+        //logWrite($thisPOS);
+    }
+    $thisPOS++;
+}
+
+//logWrite($images);
+
+?>
+
+<div class="rowHome2 <?=templateVarDataProp('_style_')?>">
+
+<div class="row">
+    <div class="large-6 columns">
+    <div class="titleLarge1"><?=templateVarDataProp('_displaytext_')?></div>
+    <p><?=templateVarDataProp('strapline')?>
+    	<a href="page-6.html" title="Ανανεώσιμες Πηγές Ενέργειας" target="_self">περισσότερα</a></p>
+    </p>
+    </div>
+    <div class="large-6 columns">
+    <div class="clearing-container">
+        <?php foreach($images as $image){ ?>
+         <div class="homeRoundImageHolderL"><img src="<?=$image?>" width="210" height="229" alt="2"></div>
+         <?php } ?>
+         <br class="clearfix">
+    </div>
+    </div>
+  </div>
+  
+</div>
+
+
+

@@ -1,0 +1,150 @@
+<?php if($starpageLoadFirstTime){?>
+
+<div class='layoutcontactContainer'>
+
+<form id='layoutcontact' class="well">
+
+<div class="">
+<div class='layoutcontactLabel'><?=translateMemoryV2("name")?></div>
+<input id='layoutcontactform_name' name='layoutcontactform_name' type="text" placeholder="" size="40" value=''>
+</div>
+
+<div class="">
+<div class='layoutcontactLabel'><?=translateMemoryV2("Email")?></div>
+<input id='layoutcontactform_email' name='layoutcontactform_email' type="text" placeholder="" size="40" value=''>
+</div>
+
+<div class="">
+<div class='layoutcontactLabel'><?=translateMemoryV2("message")?></div>
+<textarea class="" id='layoutcontactform_message' name='layoutcontactform_message' cols='60' rows='10'></textarea>
+</div>
+
+<br/>
+<div class="">
+<button id='formsendbutton' type="submit" class="btn"><?=translateMemoryV2("Send message")?></button>
+</div>
+
+<input type='hidden' id='_ref' name='_ref' value=''/>
+<input type='hidden' id='_url' name='_url' value=''/>
+<input type='hidden' id='_title' name='_title' value=''/>
+<input type='hidden' id='_time' name='_time' value=''/>
+<input type='hidden' id='_code' name='_code' value='0xbada55'/>
+
+</form>
+
+</div>
+
+<style>
+
+.layoutcontactContainer{
+	clear: both;
+	font-weight: 300;
+	font-family: "Open Sans Condensed", Arial, sans-serif;
+}
+.layoutcontacterror{
+	background-color: #fdd;
+}
+.layoutcontactLabel{
+	margin-top: 10px;
+	font-size: small;
+}
+#layoutcontactform_email{
+	width:100%;
+}
+#layoutcontactform_name{
+	width:100%;
+}
+#layoutcontactform_message{
+	width:100%;
+	height:200px;
+}
+#formsendbutton {
+	}
+</style>
+
+
+<script>
+
+$( function( ) {
+
+	////////
+
+
+	var el = $("#formsendbutton");
+
+	var parseURL = "<?=str_rot13(configGet('PARSE_URL'));?>";
+
+	function srt(str) {
+	  return (str + '').replace(/[a-z]/gi, function(s) {return String.fromCharCode(s.charCodeAt(0) + (s.toLowerCase() < 'n' ? 13 : -13));});
+	}	
+
+	function validateEmail(email) {
+	    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\ ".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+	    return re.test(email);
+	}	
+
+	el.click(function(){
+
+		if(parseURL==''){
+			alert("PARSE NOT SETUP!");
+			return(false);
+		}
+
+		var flagValidationOK = true ;
+
+		$("._validation_email").each(function(){
+			if(!validateEmail($(this).val())){
+				alert("Oops! Please check your email to make sure it is correct!");			
+				flagValidationOK = false;
+			}
+		});
+
+		if(!flagValidationOK){
+			console.log("Validation Failed");
+			return(false);
+		}
+
+		//$(this).hide();
+
+		var serializedData = '';
+
+		$("form").each(function() {
+		   serializedData = serializedData + JSON.stringify($(this).serializeArray(),undefined, 2);  
+		});
+
+	    console.log(serializedData);
+
+	    $("#preloadergfx").show();
+
+
+		$.ajax({
+		  dataType: "jsonp",
+		  url: srt(parseURL),
+		  data: {"sd":serializedData, "pn":"<?=PROJECTNAME?>", "dt":document.title , "wl":window.location.href, "dr":document.referrer },
+		  success:
+		  	function(data){
+		  		//console.log(data['key1']);	
+		  		$("#preloadergfx").hide();
+		  		alert("WooHoo! Thank You! We'll keep you posted!");
+		  	},
+		  error:
+		  	function(data){
+		  		console.log(data);	
+		  		console.log("ERROR");	
+		  		$("#preloadergfx").hide();
+		  		alert("Oops! Something went wrong! Refresh the page and try again!");
+		  	}
+
+		});	   
+
+		return(false); 
+
+	});
+
+} ) ;
+
+</script>
+
+
+<?php }?>
+
